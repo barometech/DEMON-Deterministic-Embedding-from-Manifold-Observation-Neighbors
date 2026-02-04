@@ -36,12 +36,20 @@ This repository presents validated experimental results of the DEMON algorithm �
 | **IDP disorder prediction** | **4/6 proteins** (p<0.01) | Novel capability |
 
 **IDP (Intrinsically Disordered Proteins) validation:**
-| Protein | Correlation | p-value | Disease |
-|---------|-------------|---------|---------|
-| Alpha-synuclein | r=0.478 | <10^-9 | Parkinson |
-| Tau | r=0.466 | 0.005 | Alzheimer |
-| p53 N-terminus | r=0.335 | <10^-4 | Cancer |
-| p53 TAD | r=0.266 | <0.01 | Cancer |
+| Protein | |r| | p-value | Status | Disease |
+|---------|-----|---------|--------|---------|
+| Alpha-synuclein | 0.478 | 3e-09 | **YES** | Parkinson |
+| Tau | 0.466 | 5e-03 | **YES** | Alzheimer |
+| p53 N-terminus | 0.335 | 7e-05 | **YES** | Cancer |
+| p53 TAD | 0.266 | 6e-03 | **YES** | Cancer |
+| Amyloid-beta | 0.198 | 0.22 | no (n=40) | Alzheimer |
+| FUS | 0.174 | 0.19 | no (n=59) | ALS |
+
+*Note: Amyloid-beta and FUS show correlation but fail significance due to small sample size (40-59 residues). Amyloid-beta NMR ensemble is 80% ordered.*
+
+**Rg Validation (Flory model):**
+- Alpha-synuclein: Predicted 38.8 A, SAXS experimental 40 +/- 2 A
+- Difference: 1.2 A — **within experimental error**
 
 **Comparison with AlphaFold:**
 - Training required: **NONE** (vs weeks on TPU cluster)
@@ -265,12 +273,20 @@ Licensed under [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licens
 | **Предсказание IDP** | **4/6 белков** (p<0.01) | Новая возможность |
 
 **Валидация IDP (внутренне неупорядоченные белки):**
-| Белок | Корреляция | p-value | Болезнь |
-|-------|------------|---------|---------|
-| Альфа-синуклеин | r=0.478 | <10^-9 | Паркинсон |
-| Tau | r=0.466 | 0.005 | Альцгеймер |
-| p53 N-терминус | r=0.335 | <10^-4 | Рак |
-| p53 TAD | r=0.266 | <0.01 | Рак |
+| Белок | |r| | p-value | Статус | Болезнь |
+|-------|-----|---------|--------|---------|
+| Альфа-синуклеин | 0.478 | 3e-09 | **ДА** | Паркинсон |
+| Tau | 0.466 | 5e-03 | **ДА** | Альцгеймер |
+| p53 N-терминус | 0.335 | 7e-05 | **ДА** | Рак |
+| p53 TAD | 0.266 | 6e-03 | **ДА** | Рак |
+| Амилоид-бета | 0.198 | 0.22 | нет (n=40) | Альцгеймер |
+| FUS | 0.174 | 0.19 | нет (n=59) | БАС |
+
+*Примечание: Амилоид-бета и FUS показывают корреляцию, но не достигают значимости из-за малого размера выборки (40-59 остатков). NMR ансамбль амилоида-бета на 80% упорядочен.*
+
+**Валидация Rg (модель Флори):**
+- Альфа-синуклеин: Предсказано 38.8 A, SAXS эксперимент 40 +/- 2 A
+- Разница: 1.2 A — **в пределах экспериментальной ошибки**
 
 **Сравнение с AlphaFold:**
 - Требуется обучение: **НЕТ** (против недель на TPU-кластере)
