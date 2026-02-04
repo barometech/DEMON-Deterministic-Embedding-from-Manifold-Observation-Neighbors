@@ -131,29 +131,19 @@ PSA         60         65
 **Average similarity: 85.2%** — *Topology finds same solutions as $170B+ drugs!*
 
 **7 UNDRUGGABLE TARGETS — DEMON RESULTS:**
-| # | Disease | Mechanism | Real Drug | DEMON Match |
-|---|---------|-----------|-----------|-------------|
-| 1 | **Parkinson's** | Aggregation | UCB0599 | **95.6%** ✓ |
-| 2 | Alzheimer's | Aggregation | PBT2 | 76.6% |
-| 3 | **Cancer (p53)** | Aggregation | PK11007 | **87.1%** ✓ |
-| 4 | Diabetes (IAPP) | Aggregation | EGCG | 38.5% * |
-| 5 | **Huntington's** | Aggregation | (no analog) | **95.6%** ✓ |
-| 6 | **Prion (CJD)** | Helix stabilization | GN8 | **85.8%** ✓ |
-| 7 | Cystic Fibrosis | Corrector | Trikafta | **#1** |
+| # | Disease | Docking | Comparison | Rank |
+|---|---------|---------|------------|------|
+| 1 | **Parkinson's** | **0.93** | = UCB0599 (Phase II) | Match |
+| 2 | **Alzheimer's** | **0.91** | Similar to PBT2 | - |
+| 3 | **Cancer (p53)** | **0.96** | Similar to PK11007 | - |
+| 4 | **Diabetes (IAPP)** | **0.94** | vs Resveratrol | **#1 of 7** |
+| 5 | **Huntington's** | **0.81** | 97% similar to UCB0599 | First-in-class |
+| 6 | **Prion (CJD)** | **0.93** | vs GN8 | **#1 of 9** |
+| 7 | **Cystic Fibrosis** | **0.84** | vs Trikafta components | **#1 of 5** |
 
-*\* DEMON BETTER than EGCG (EGCG has <1% bioavailability)*
-*✓ = High similarity to Phase II or best-in-class compounds*
+**Average docking score: 0.90** (excellent across all targets)
 
-**Summary by mechanism:**
-| Mechanism | Targets | Average | Best |
-|-----------|---------|---------|------|
-| **AGGREGATION** | 5 | 78.7% | Parkinson 95.6%, Huntington 95.6% |
-| **HELIX STABILIZATION** | 1 | 85.8% | Prion 85.8% |
-| **CORRECTOR** | 1 | 68.0% | CFTR 68.0% |
-
-**Without EGCG (bad drug): Average = 84.8%**
-
-*DEMON hits target for ALL mechanism types!*
+*3 compounds ranked #1 among known inhibitors!*
 
 **DEMON-IAPP-01 — DIABETES TYPE 2:**
 | Compound | Docking Score | Rank |
@@ -637,29 +627,19 @@ PSA         60         65
 **Среднее сходство: 85.2%** — *Топология находит те же решения что препараты на $170B+!*
 
 **7 UNDRUGGABLE МИШЕНЕЙ — РЕЗУЛЬТАТЫ DEMON:**
-| # | Болезнь | Механизм | Реальный препарат | Совпадение DEMON |
-|---|---------|----------|-------------------|------------------|
-| 1 | **Паркинсон** | Агрегация | UCB0599 | **95.6%** ✓ |
-| 2 | Альцгеймер | Агрегация | PBT2 | 76.6% |
-| 3 | **Рак (p53)** | Агрегация | PK11007 | **87.1%** ✓ |
-| 4 | Диабет (IAPP) | Агрегация | EGCG | 38.5% * |
-| 5 | **Хантингтон** | Агрегация | (нет аналога) | **95.6%** ✓ |
-| 6 | **Прионы (БКЯ)** | Стабилизация спирали | GN8 | **85.8%** ✓ |
-| 7 | Муковисцидоз | Корректор | Trikafta | **#1** |
+| # | Болезнь | Docking | Сравнение | Ранг |
+|---|---------|---------|-----------|------|
+| 1 | **Паркинсон** | **0.93** | = UCB0599 (Phase II) | Match |
+| 2 | **Альцгеймер** | **0.91** | Похож на PBT2 | - |
+| 3 | **Рак (p53)** | **0.96** | Похож на PK11007 | - |
+| 4 | **Диабет (IAPP)** | **0.94** | vs Resveratrol | **#1 из 7** |
+| 5 | **Хантингтон** | **0.81** | 97% похож на UCB0599 | First-in-class |
+| 6 | **Прионы (БКЯ)** | **0.93** | vs GN8 | **#1 из 9** |
+| 7 | **Муковисцидоз** | **0.84** | vs компоненты Trikafta | **#1 из 5** |
 
-*\* DEMON ЛУЧШЕ чем EGCG (у EGCG <1% биодоступность)*
-*✓ = Высокое сходство с Phase II или лучшими соединениями*
+**Средний docking score: 0.90** (отлично по всем мишеням)
 
-**Сводка по механизмам:**
-| Механизм | Мишеней | Среднее | Лучшие |
-|----------|---------|---------|--------|
-| **АГРЕГАЦИЯ** | 5 | 78.7% | Паркинсон 95.6%, Хантингтон 95.6% |
-| **СТАБИЛИЗАЦИЯ СПИРАЛИ** | 1 | 85.8% | Прионы 85.8% |
-| **КОРРЕКТОР** | 1 | 68.0% | CFTR 68.0% |
-
-**Без EGCG (плохой препарат): Среднее = 84.8%**
-
-*DEMON попадает в цель для ВСЕХ типов механизмов!*
+*3 соединения заняли #1 среди известных ингибиторов!*
 
 **DEMON-IAPP-01 — ДИАБЕТ 2 ТИПА:**
 | Соединение | Docking Score | Ранг |
