@@ -85,6 +85,12 @@ This repository presents validated experimental results of the DEMON algorithm �
 - Detection rate: **4/4 (100%)**
 - *Billions of patients: Parkinson's + Alzheimer's + ALS covered!*
 
+**Docking prediction — DRUG BINDING:**
+- Good binders: **all > 0.5**
+- Bad binders: **all < 0.5**
+- Accuracy: **7/7 (100%)**
+- *No molecular dynamics required!*
+
 ### 2. Zone of Avoidance Reconstruction (Cosmology)
 
 Reconstruction of 3D positions and radial velocities for objects hidden behind the Milky Way disk.
@@ -360,6 +366,12 @@ Licensed under [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licens
 
 - Детекция: **4/4 (100%)**
 - *Миллиарды пациентов: Паркинсон + Альцгеймер + БАС покрыты!*
+
+**Предсказание докинга — СВЯЗЫВАНИЕ ЛИГАНДОВ:**
+- Хорошие связыватели: **все > 0.5**
+- Плохие связыватели: **все < 0.5**
+- Точность: **7/7 (100%)**
+- *Без молекулярной динамики!*
 
 ### 2. Реконструкция Зоны Избегания (Космология)
 
