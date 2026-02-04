@@ -4,11 +4,14 @@
 
 *Universal algorithm for searching any attractor in dynamic systems*
 
+**Release Date: February 4, 2026**
+
 ## Validated Experimental Results
 
 **Author:** Popovich Pavel Dmitrievich (born 7th August 1987)
-**License:** Proprietary - All Rights Reserved. Not for commercial use.
-**Contact:** For collaboration inquiries only.
+**Created:** February 4, 2026
+**License:** PolyForm Noncommercial 1.0.0
+**Contact:** barometech@gmail.com
 
 ---
 
@@ -218,7 +221,7 @@ Licensed under [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licens
 
 ---
 
-*Last updated: February 2026*
+*Published: February 4, 2026*
 
 ---
 ---
@@ -228,11 +231,16 @@ Licensed under [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licens
 
 **DEMON** — Deterministic Embedding from Manifold Observation Neighbors
 
+*Универсальный алгоритм поиска аттракторов в динамических системах*
+
+**Дата публикации: 4 февраля 2026**
+
 ## Валидированные Экспериментальные Результаты
 
-**Автор:** Попович Павел Дмитриевич (7 августа 1987 г.р.)  
-**Лицензия:** Проприетарная - Все права защищены. Не для коммерческого использования.  
-**Контакт:** Только для запросов о сотрудничестве.
+**Автор:** Попович Павел Дмитриевич (7 августа 1987 г.р.)
+**Создан:** 4 февраля 2026
+**Лицензия:** PolyForm Noncommercial 1.0.0
+**Контакт:** barometech@gmail.com
 
 ---
 
@@ -442,4 +450,4 @@ Observation Neighbors. Unpublished manuscript.
 
 ---
 
-*Последнее обновление: Февраль 2026*
+*Опубликовано: 4 февраля 2026*
