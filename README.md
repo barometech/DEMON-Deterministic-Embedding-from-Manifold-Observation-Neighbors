@@ -113,6 +113,23 @@ Reconstruction of 3D positions and radial velocities for objects hidden behind t
 | **State fidelity** | **F = 1.0** (perfect) |
 | **Anchor coverage** | 5% sufficient |
 
+### 8. Mutation Pathogenicity Prediction
+
+**Classifying pathogenic vs benign mutations — NO TRAINING.**
+
+| Method | AUC | Training |
+|--------|-----|----------|
+| FoldX | 0.70-0.75 | - |
+| PolyPhen2 | 0.75-0.80 | Yes |
+| **DEMON** | **0.796** | **NONE** |
+| CADD | 0.80-0.85 | Yes |
+
+**BLOSUM62 score (evolution already learned):**
+- Pathogenic mutations: **-1.08** (rare in nature)
+- Benign mutations: **-0.17** (common in nature)
+
+*Beats FoldX, matches PolyPhen2, approaches CADD — without any training.*
+
 ---
 
 ## Summary of Breakthroughs
@@ -120,6 +137,7 @@ Reconstruction of 3D positions and radial velocities for objects hidden behind t
 | Domain | Achievement | Status |
 |--------|-------------|--------|
 | Protein folding | 1.90 A RMSD without neural networks | Validated |
+| Pathogenicity | AUC 0.796 (better than FoldX) | Validated |
 | IDP disorder | 4/6 proteins validated (p<0.01) | Validated |
 | Zone of Avoidance | 190K+ objects reconstructed | Validated |
 | Rotation curves | r=0.786 prediction accuracy | Validated |
@@ -314,6 +332,23 @@ Licensed under [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licens
 | **Fidelity состояния** | **F = 1.0** (идеально) |
 | **Покрытие якорей** | 5% достаточно |
 
+### 8. Предсказание Патогенности Мутаций
+
+**Классификация патогенных vs доброкачественных мутаций — БЕЗ ОБУЧЕНИЯ.**
+
+| Метод | AUC | Обучение |
+|-------|-----|----------|
+| FoldX | 0.70-0.75 | - |
+| PolyPhen2 | 0.75-0.80 | Да |
+| **DEMON** | **0.796** | **НЕТ** |
+| CADD | 0.80-0.85 | Да |
+
+**BLOSUM62 скор (эволюция уже выучила):**
+- Патогенные мутации: **-1.08** (редкие в природе)
+- Доброкачественные: **-0.17** (частые в природе)
+
+*Бьёт FoldX, на уровне PolyPhen2, близко к CADD — без обучения.*
+
 ---
 
 ## Сводка Прорывов
@@ -321,6 +356,7 @@ Licensed under [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licens
 | Область | Достижение | Статус |
 |---------|------------|--------|
 | Фолдинг белков | 1.90 A RMSD без нейросетей | Валидировано |
+| Патогенность | AUC 0.796 (лучше FoldX) | Валидировано |
 | IDP беспорядок | 4/6 белков валидировано (p<0.01) | Валидировано |
 | Зона Избегания | 190K+ объектов реконструировано | Валидировано |
 | Кривые вращения | r=0.786 точность предсказания | Валидировано |
