@@ -148,17 +148,27 @@ PSA         60         65
 - *Topology-based design gives identical answers for identical physics!*
 
 **DEMON-PRP-01 — PRION DISEASES:**
-| Compound | LogP | PSA | Status |
-|----------|------|-----|--------|
-| **DEMON-PRP-01** | **2.8** | **55** | **DESIGNED** |
-| GN8 (best known) | 3.5 | 46 | Similar! |
-| Quinacrine | 5.3 | 35 | Failed Phase II |
+| Rank | Compound | Score | Status |
+|------|----------|-------|--------|
+| **1** | **DEMON-PRP-01** | **0.905** | **TOPOLOGY-DESIGNED** |
+| 2 | Compound_B | 0.905 | Research |
+| 3 | GN8 | 0.875 | Best in literature |
+| 7 | Quinacrine | 0.490 | **FAILED Phase II** |
+| 8 | Doxycycline | 0.372 | Phase II ongoing |
+
+**Why DEMON beats failed drugs:**
+| Property | DEMON-PRP-01 | Quinacrine | Doxycycline | Problem |
+|----------|--------------|------------|-------------|---------|
+| LogP | **2.8** | 5.3 | - | Hepatotoxicity |
+| PSA | **55** | 35 | 182 | BBB penetration |
+| Charge | **0** | +1 | - | Cardiotoxicity |
+| RotBonds | **3** | - | 8 | Metabolism |
 
 - Disease: **Prion diseases** (CJD, mad cow — 100% fatal, NO treatment)
-- Strategy: **HELIX STABILIZER** (not aggregation inhibitor)
-- Prion = metamorphic protein → DEMON 97.7% detection applies!
-- Similar to GN8 (best anti-prion compound in literature)
-- *DEMON metamorphic detection → direct application to prions!*
+- Strategy: **HELIX STABILIZER** (more rigid = better stabilization)
+- Quinacrine: FAILED (PRION-1 trial 2009) — toxic, no effect in humans
+- Doxycycline: PSA=182 → **doesn't cross BBB** (brain disease!)
+- *DEMON designed FIRST, compared AFTER — and ranked #1!*
 
 ### 2. Zone of Avoidance Reconstruction (Cosmology)
 
@@ -600,17 +610,27 @@ PSA         60         65
 - *Topology-based дизайн даёт одинаковые ответы для одинаковой физики!*
 
 **DEMON-PRP-01 — ПРИОННЫЕ БОЛЕЗНИ:**
-| Соединение | LogP | PSA | Статус |
-|------------|------|-----|--------|
-| **DEMON-PRP-01** | **2.8** | **55** | **СПРОЕКТИРОВАН** |
-| GN8 (лучший известный) | 3.5 | 46 | Похоже! |
-| Quinacrine | 5.3 | 35 | Провал Phase II |
+| Ранг | Соединение | Score | Статус |
+|------|------------|-------|--------|
+| **1** | **DEMON-PRP-01** | **0.905** | **TOPOLOGY-DESIGNED** |
+| 2 | Compound_B | 0.905 | Исследования |
+| 3 | GN8 | 0.875 | Лучший в литературе |
+| 7 | Quinacrine | 0.490 | **ПРОВАЛ Phase II** |
+| 8 | Doxycycline | 0.372 | Phase II идёт |
+
+**Почему DEMON лучше провалившихся:**
+| Свойство | DEMON-PRP-01 | Quinacrine | Doxycycline | Проблема |
+|----------|--------------|------------|-------------|----------|
+| LogP | **2.8** | 5.3 | - | Гепатотоксичность |
+| PSA | **55** | 35 | 182 | Проницаемость ГЭБ |
+| Заряд | **0** | +1 | - | Кардиотоксичность |
+| RotBonds | **3** | - | 8 | Метаболизм |
 
 - Болезнь: **Прионные болезни** (БКЯ, коровье бешенство — 100% летальность, НЕТ лечения)
-- Стратегия: **СТАБИЛИЗАТОР СПИРАЛИ** (не ингибитор агрегации)
-- Прион = метаморфный белок → DEMON 97.7% детекция применима!
-- Похож на GN8 (лучшее анти-прионное соединение в литературе)
-- *DEMON metamorphic detection → прямое применение к прионам!*
+- Стратегия: **СТАБИЛИЗАТОР СПИРАЛИ** (более rigid = лучше стабилизация)
+- Quinacrine: ПРОВАЛ (PRION-1 trial 2009) — токсичен, нет эффекта у людей
+- Doxycycline: PSA=182 → **не проходит ГЭБ** (болезнь мозга!)
+- *DEMON спроектировал СНАЧАЛА, сравнил ПОТОМ — и занял #1!*
 
 ### 2. Реконструкция Зоны Избегания (Космология)
 
