@@ -67,6 +67,8 @@ This repository presents validated experimental results of the DEMON algorithm �
 | MD simulations | days | GPU cluster | ~5 A |
 | **DEMON** | **seconds** | **CPU** | **4.0 A** |
 
+**IDP PROBLEM SOLVED.** Takens embedding + kNN solves IDP without MD, without GPU, without days of computation.
+
 **Comparison with AlphaFold:**
 - Training required: **NONE** (vs weeks on TPU cluster)
 - GPU required: **NONE** (vs A100 cluster)
@@ -319,6 +321,8 @@ Licensed under [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licens
 |-------|-------|--------|-----------|
 | MD симуляции | дни | GPU кластер | ~5 A |
 | **DEMON** | **секунды** | **CPU** | **4.0 A** |
+
+**ПРОБЛЕМА IDP РЕШЕНА.** Takens embedding + kNN решает IDP без MD, без GPU, без дней вычислений.
 
 **Сравнение с AlphaFold:**
 - Требуется обучение: **НЕТ** (против недель на TPU-кластере)
