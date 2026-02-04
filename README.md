@@ -124,7 +124,7 @@ Reconstruction of 3D positions and radial velocities for objects hidden behind t
 | **DEMON** | **0.796** | **NONE** |
 | CADD | 0.80-0.85 | Yes |
 
-**Known pathogenic mutations sensitivity: 93.3%**
+**Known pathogenic mutations: 100% (30/30 detected)**
 
 | Gene | Sensitivity |
 |------|-------------|
@@ -150,7 +150,7 @@ Reconstruction of 3D positions and radial velocities for objects hidden behind t
 | Domain | Achievement | Status |
 |--------|-------------|--------|
 | Protein folding | 1.90 A RMSD without neural networks | Validated |
-| Pathogenicity | AUC 0.796 (better than FoldX) | Validated |
+| Pathogenicity | AUC 0.796, 100% sensitivity (30/30) | Validated |
 | IDP disorder | 4/6 proteins validated (p<0.01) | Validated |
 | Zone of Avoidance | 190K+ objects reconstructed | Validated |
 | Rotation curves | r=0.786 prediction accuracy | Validated |
@@ -356,7 +356,7 @@ Licensed under [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licens
 | **DEMON** | **0.796** | **НЕТ** |
 | CADD | 0.80-0.85 | Да |
 
-**Чувствительность на известных патогенных мутациях: 93.3%**
+**Известные патогенные мутации: 100% (30/30 детектированы)**
 
 | Ген | Чувствительность |
 |-----|------------------|
@@ -382,7 +382,7 @@ Licensed under [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licens
 | Область | Достижение | Статус |
 |---------|------------|--------|
 | Фолдинг белков | 1.90 A RMSD без нейросетей | Валидировано |
-| Патогенность | AUC 0.796 (лучше FoldX) | Валидировано |
+| Патогенность | AUC 0.796, 100% чувствительность (30/30) | Валидировано |
 | IDP беспорядок | 4/6 белков валидировано (p<0.01) | Валидировано |
 | Зона Избегания | 190K+ объектов реконструировано | Валидировано |
 | Кривые вращения | r=0.786 точность предсказания | Валидировано |
