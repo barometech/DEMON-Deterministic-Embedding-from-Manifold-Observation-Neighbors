@@ -134,10 +134,14 @@ Reconstruction of 3D positions and radial velocities for objects hidden behind t
 | TP53 | 88% |
 | SNCA | 83% |
 
-**BLOSUM62 score (evolution already learned):**
-- Pathogenic: **-1.30** | Benign: **+0.75** | Gap: **2.05**
+**Reproducibility (12k vs 80k dataset):**
+| Metric | 12k | 80k |
+|--------|-----|-----|
+| AUC-ROC | 0.796 | 0.788 |
+| BLOSUM pathogenic | -1.08 | -1.09 |
+| BLOSUM benign | -0.17 | -0.11 |
 
-*Beats FoldX, matches PolyPhen2, approaches CADD — without any training.*
+*Signal confirmed on 80k variants. Beats FoldX, matches PolyPhen2 — without any training.*
 
 ---
 
@@ -362,10 +366,14 @@ Licensed under [PolyForm Noncommercial 1.0.0](https://polyformproject.org/licens
 | TP53 | 88% |
 | SNCA | 83% |
 
-**BLOSUM62 скор (эволюция уже выучила):**
-- Патогенные: **-1.30** | Доброкачественные: **+0.75** | Разрыв: **2.05**
+**Воспроизводимость (12k vs 80k датасет):**
+| Метрика | 12k | 80k |
+|---------|-----|-----|
+| AUC-ROC | 0.796 | 0.788 |
+| BLOSUM патогенные | -1.08 | -1.09 |
+| BLOSUM доброкачественные | -0.17 | -0.11 |
 
-*Бьёт FoldX, на уровне PolyPhen2, близко к CADD — без обучения.*
+*Сигнал подтверждён на 80k вариантах. Бьёт FoldX, на уровне PolyPhen2 — без обучения.*
 
 ---
 
