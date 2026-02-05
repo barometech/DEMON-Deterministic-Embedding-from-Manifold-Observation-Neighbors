@@ -209,12 +209,14 @@ Reconstruction of 3D positions and radial velocities for objects hidden behind t
 | Metric | Result | Significance |
 |--------|--------|--------------|
 | **Total objects mapped** | **190,087** | Largest ZoA catalog |
-| **Stars reconstructed** | 223,410 | Gaia DR3 + 2MASS + WISE |
 | **Galaxies mapped** | 16,401 | HIZOA + 2MASX |
+| **APOGEE stars** | 14,546 | Validation set |
 | **Invisible stars predicted** | 159,140 | Novel predictions |
 | **Independent validation (APOGEE)** | **r = 0.761** | Blind test |
 | **Internal validation** | r = 0.804 | Cross-validation |
 | **Filament significance** | 18/20 (90%) | p < 0.05 |
+
+**Breakdown:** 16,401 galaxies + 14,546 APOGEE stars + 159,140 reconstructed = **190,087 total**
 
 ### 3. Galaxy Rotation Curves (SPARC Dataset)
 
@@ -1160,12 +1162,14 @@ PSA         60         65
 | Метрика | Результат | Значимость |
 |---------|-----------|------------|
 | **Всего объектов картировано** | **190 087** | Крупнейший каталог ZoA |
-| **Реконструировано звёзд** | 223 410 | Gaia DR3 + 2MASS + WISE |
 | **Картировано галактик** | 16 401 | HIZOA + 2MASX |
+| **Звёзды APOGEE** | 14 546 | Валидационный набор |
 | **Предсказано невидимых звёзд** | 159 140 | Новые предсказания |
 | **Независимая валидация (APOGEE)** | **r = 0.761** | Слепой тест |
 | **Внутренняя валидация** | r = 0.804 | Кросс-валидация |
 | **Значимость филаментов** | 18/20 (90%) | p < 0.05 |
+
+**Расклад:** 16 401 галактик + 14 546 звёзд APOGEE + 159 140 реконструированных = **190 087 итого**
 
 ### 3. Кривые Вращения Галактик (Датасет SPARC)
 
