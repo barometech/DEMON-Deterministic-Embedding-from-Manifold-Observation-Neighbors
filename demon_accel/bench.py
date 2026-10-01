@@ -32,7 +32,8 @@ def bench_operator(n, r, n_cols, reps, tol, rng):
     t_probe = time.perf_counter(); adm = admit(A, tol=tol, n_cols=n_cols); t_probe = time.perf_counter() - t_probe
     t_dense = timeit(lambda: A @ B, reps)
     row = dict(kind="lowrank", n=n, r_true=r, n_cols=n_cols, status=adm.status.value, rank=adm.rank,
-               t_dense=t_dense, t_probe=t_probe, flops_speedup=adm.speedup_flops, rel_err_bound=adm.rel_err_bound)
+               t_dense=t_dense, t_probe=t_probe, flops_speedup=adm.speedup_flops, rel_err_bound=adm.rel_err_bound,
+               probe_over_dense_flops=adm.probe_flops / adm.flops_full)
     if adm.admitted:
         C_ref = A @ B
         t_served = timeit(lambda: adm.operator.matmul(B), reps)
@@ -48,11 +49,22 @@ def bench_fullrank(n, n_cols, reps, tol, rng):
     t_probe = time.perf_counter(); adm = admit(A, tol=tol, n_cols=n_cols); t_probe = time.perf_counter() - t_probe
     t_dense = timeit(lambda: A @ B, reps)
     return dict(kind="fullrank", n=n, r_true=n, n_cols=n_cols, status=adm.status.value, rank=adm.rank,
-                t_dense=t_dense, t_probe=t_probe, flops_speedup=adm.speedup_flops, rel_err_bound=adm.rel_err_bound)
+                t_dense=t_dense, t_probe=t_probe, probe_over_dense_wall=t_probe / t_dense,
+                rel_err_bound=adm.rel_err_bound, probe_over_dense_flops=adm.probe_flops / adm.flops_full)
+
+
+def make_lowrank_rho1(n, r, lo=0.3, rng=None):
+    """Symmetric rank-r A = U diag(lam) U^T with eigenvalues linspace(1, lo, r): spectral
+    radius exactly 1, so iterates do not vanish (a random U S V^T has rho ~ sqrt(r/n) and
+    its iterates underflow to exactly 0 within ~130 steps, which makes the test trivial)."""
+    rng = rng or np.random.default_rng(0)
+    U = np.linalg.qr(rng.standard_normal((n, r)))[0]
+    lam = np.linspace(1.0, lo, r)
+    return (U * lam) @ U.T
 
 
 def bench_anchors(n, r, K, rng):
-    A = make_lowrank(n, r, rng=rng)
+    A = make_lowrank_rho1(n, r, rng=rng)
     y0 = rng.standard_normal(n)
     ys = []; y = y0
     t = time.perf_counter()
@@ -62,7 +74,8 @@ def bench_anchors(n, r, K, rng):
     it = AnchorIterator(A, rank=r, tol=1e-9)
     t = time.perf_counter(); out = it.run(y0, K); t_served = time.perf_counter() - t
     err = max(np.linalg.norm(a - b) / max(np.linalg.norm(b), 1e-300) for a, b in zip(out, ys))
-    return dict(kind="anchors", n=n, r_true=r, K=K, refused=it.refused, max_rel_err=err,
+    return dict(kind="anchors", n=n, r_true=r, K=K, refused=it.refused, checks=it.checks, max_rel_err=err,
+                min_iterate_norm=float(min(np.linalg.norm(v) for v in ys)),
                 flops_speedup=(2 * n * n * K) / it.flops, wall_speedup=t_dense / t_served)
 
 
@@ -73,7 +86,7 @@ def fmt(row):
 def main(argv=None):
     p = argparse.ArgumentParser()
     p.add_argument("--n", type=int, default=2048)
-    p.add_argument("--reps", type=int, default=5)
+    p.add_argument("--reps", type=int, default=7)
     p.add_argument("--tol", type=float, default=1e-6)
     a = p.parse_args(argv)
     rng = np.random.default_rng(0)

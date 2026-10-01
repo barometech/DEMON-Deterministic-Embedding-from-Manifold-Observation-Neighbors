@@ -19,7 +19,8 @@ def _xp(a):
 
 def _randn(xp, shape, like, seed):
     if xp is np:
-        return np.random.default_rng(seed).standard_normal(shape).astype(like.dtype, copy=False)
+        dt = like.dtype if np.issubdtype(like.dtype, np.floating) else np.float64
+        return np.random.default_rng(seed).standard_normal(shape).astype(dt, copy=False)
     g = xp.Generator(device=like.device).manual_seed(int(seed))
     return xp.randn(*shape, generator=g, dtype=like.dtype, device=like.device)
 
@@ -95,15 +96,20 @@ def sketch_svd(A, rank: int, oversample: int = 8, power_iters: int = 1, seed: in
 
 
 def adaptive_rank(A, tol: float, r_max: int, r0: int = 8, growth: float = 2.0,
-                  oversample: int = 8, power_iters: int = 1, seed: int = 0):
-    """Smallest rank in the geometric ladder r0, r0*growth, ... <= r_max whose range
-    finder meets relative residual `tol` (certified bound / ||A||_F-based normaliser).
+                  oversample: int = 8, power_iters: int = 1, seed: int = 0,
+                  stop_tol_abs: float | None = None):
+    """Smallest ladder rank r in r0, r0*growth, ... <= r_max whose width-(r+oversample)
+    range finder meets the certified spectral residual bound: bound / ||A||_F <= tol, or, if
+    `stop_tol_abs` is given, bound / s_1 <= stop_tol_abs with s_1 a lower estimate of
+    ||A||_2 from the sketch (used for norm="spectral").
 
-    Returns (rank, Q, rel_bound, rel_max). If no rank <= r_max meets tol, returns the
-    last tried rank with its (failing) residuals; the caller decides.
+    Returns (rank, Q, rel_bound_fro, rel_max_fro) with the residuals divided by ||A||_F.
+    If no rank <= r_max meets the criterion, returns the last tried rank with its
+    (failing) residuals; the caller decides. The same probe vectors are reused across
+    rungs, so the certificate's failure probability is <= n_rungs * 1e-10.
     """
     xp = _xp(A)
-    normA = _norm(xp, A)                 # Frobenius; relative to it the bound is conservative
+    normA = _norm(xp, A)                 # Frobenius
     if normA == 0.0:
         Q = range_finder(A, 1, 0, 0, seed)
         return 1, Q, 0.0, 0.0
@@ -112,6 +118,11 @@ def adaptive_rank(A, tol: float, r_max: int, r0: int = 8, growth: float = 2.0,
         Q = range_finder(A, r, oversample, power_iters, seed)
         bound, mx = residual_estimate(A, Q, seed=seed + 1)
         rel_bound, rel_max = bound / normA, mx / normA
-        if rel_bound <= tol or r >= r_max:
+        if stop_tol_abs is not None:
+            s1 = _norm(xp, Q.T @ A) if False else float(xp.linalg.norm(Q.T @ A, 2) if xp is np else xp.linalg.matrix_norm(Q.T @ A, 2))
+            ok = bound / max(s1, 1e-300) <= stop_tol_abs
+        else:
+            ok = rel_bound <= tol
+        if ok or r >= r_max:
             return r, Q, rel_bound, rel_max
         r = min(r_max, int(math.ceil(r * growth)))

@@ -1,12 +1,20 @@
 """Trajectory-stratum accelerator for iterated products y_{k+1} = A y_k.
 
-The first r+2 iterates (anchors) span the subspace the trajectory lives in; after
-projecting A onto it each step costs O(n r). Correctness is certified by exact checks:
-at served steps 1, 2, 4, 8, ... (geometric) and then every `check_every` steps, the true
-product A @ y_prev is computed and compared with the served step. On failure the iterator
-refuses, recomputes every iterate since the last verified one exactly, and continues with
-exact products. Every returned iterate is therefore either exact or within `tol` of a
-verified step.
+The first r+2 iterates (anchors) span an A-invariant subspace containing the trajectory
+(Krylov argument: z_{k+1} = G z_k in the r-dimensional coordinates, Cayley-Hamilton). After
+projecting A onto it a served step costs 4 n r flops; the per-step cost including checks is
+O(n r + n^2 / check_every), not O(n r).
+
+Local invariance check: at served steps 1, 2, 4, 8, ... (geometric) and then every
+`check_every` steps, the exact product A @ y_prev of the PREVIOUS SERVED iterate is
+compared with the served step; the served iterate is replaced by that exact product. On
+failure the iterator refuses, recomputes every iterate since the last fully exact one, and
+continues with exact products. What this certifies: each checked step deviates from one
+exact application of A by at most `tol` (relative). What it does NOT certify: the global
+error against the exact trajectory from y0, which can accumulate roughly linearly in the
+number of served steps (measured up to ~200 x tol over 500 steps for spectra with moduli
+in [0.3, 1]) and can also trigger needless refusals when |lambda| are all near 1. Use
+tol / n_steps for a global budget, or re-anchor from exact iterates for long runs.
 """
 from __future__ import annotations
 from dataclasses import dataclass, field
