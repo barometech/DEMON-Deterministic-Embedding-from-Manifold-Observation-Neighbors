@@ -17,7 +17,7 @@ class Status(str, Enum):
 class Admission:
     status: Status
     rank: int
-    rel_err_bound: float        # certified (prob >= 1-1e-10) relative spectral residual / ||A||_F
+    rel_err_bound: float        # certified (prob >= 1-1e-10) ||A - QQ^T A||_2 / ||A||_F for the SERVED operator
     rel_err_est: float          # non-certified max-probe estimate
     flops_full: int
     flops_served: int
@@ -38,20 +38,24 @@ def admit(A, tol: float = 1e-6, n_cols: int | None = None, r_max: int | None = N
 
     tol         relative residual the served product must satisfy (certified bound)
     n_cols      number of columns of B the operator will be applied to (cost model); default k
-    r_max       largest rank considered; default min(m,k)//4
+    r_max       largest ladder rank considered (served rank = ladder rank + 8 oversample);
+                default min(m,k)//4
     speedup_min minimum FLOP reduction required to admit
     """
     m, k = A.shape
     n = k if n_cols is None else int(n_cols)
     if r_max is None:
         r_max = max(1, min(m, k) // 4)
-    rank, Q, rel_bound, rel_max = adaptive_rank(A, tol, r_max, power_iters=power_iters, seed=seed)
+    _, Q, rel_bound, rel_max = adaptive_rank(A, tol, r_max, power_iters=power_iters, seed=seed)
+    # The certificate is for the projector Q Q^T. We serve exactly that operator (all
+    # Q.shape[1] = rank + oversample components), never a truncation of it.
+    rank = int(Q.shape[1])
     flops_full = LowRankOperator.flops_dense(m, k, n)
     flops_served = 2 * rank * (k * n + m * n) + rank * n
     if rel_bound > tol:
         return Admission(Status.REFUSE_FULL_RANK, rank, rel_bound, rel_max, flops_full, flops_served)
     if flops_served * speedup_min > flops_full:
         return Admission(Status.REFUSE_NO_SPEEDUP, rank, rel_bound, rel_max, flops_full, flops_served)
-    U, S, Vt = sketch_svd(A, rank, power_iters=power_iters, seed=seed)
+    U, S, Vt = sketch_svd(A, rank, power_iters=power_iters, seed=seed, Q=Q)
     return Admission(Status.ADMIT, rank, rel_bound, rel_max, flops_full, flops_served,
                      LowRankOperator(U, S, Vt))

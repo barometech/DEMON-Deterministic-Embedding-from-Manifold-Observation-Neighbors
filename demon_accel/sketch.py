@@ -74,10 +74,16 @@ def residual_estimate(A, Q, n_probes: int = 10, seed: int = 1):
     return bound, mx
 
 
-def sketch_svd(A, rank: int, oversample: int = 8, power_iters: int = 1, seed: int = 0):
-    """Rank-`rank` truncated SVD via randomized range finder. Returns (U, S, Vt)."""
+def sketch_svd(A, rank: int, oversample: int = 8, power_iters: int = 1, seed: int = 0, Q=None):
+    """Rank-`rank` truncated SVD via randomized range finder. Returns (U, S, Vt).
+
+    If `Q` (an orthonormal basis) is given it is used instead of a fresh range finder.
+    NOTE: truncating to `rank` < Q.shape[1] is NOT covered by a certificate computed for Q;
+    callers that need the certificate must keep all Q.shape[1] components (see gate.admit).
+    """
     xp = _xp(A)
-    Q = range_finder(A, rank, oversample, power_iters, seed)
+    if Q is None:
+        Q = range_finder(A, rank, oversample, power_iters, seed)
     B = Q.T @ A                                   # (l x k) small
     if xp is np:
         Ub, S, Vt = np.linalg.svd(B, full_matrices=False)
