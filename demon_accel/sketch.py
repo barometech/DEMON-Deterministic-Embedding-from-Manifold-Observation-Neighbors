@@ -119,7 +119,7 @@ def adaptive_rank(A, tol: float, r_max: int, r0: int = 8, growth: float = 2.0,
         bound, mx = residual_estimate(A, Q, seed=seed + 1)
         rel_bound, rel_max = bound / normA, mx / normA
         if stop_tol_abs is not None:
-            s1 = _norm(xp, Q.T @ A) if False else float(xp.linalg.norm(Q.T @ A, 2) if xp is np else xp.linalg.matrix_norm(Q.T @ A, 2))
+            s1 = float(np.linalg.norm(Q.T @ A, 2) if xp is np else xp.linalg.matrix_norm(Q.T @ A, 2))
             ok = bound / max(s1, 1e-300) <= stop_tol_abs
         else:
             ok = rel_bound <= tol
